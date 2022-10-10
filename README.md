@@ -140,7 +140,7 @@ if env.str("RECAPTCHA_PUBLIC_KEY", None) and env.str("RECAPTCHA_PRIVATE_KEY", No
 admin.site.login_template = "login.html"
 ```
 
-### panle login
+### panel login
 ```
 from django.contrib.auth.views import LoginView
 from ###.admin import LoginForm
