@@ -18,6 +18,10 @@ RECAPTCHA_PRIVATE_KEY=6LdtyR0iAAAAAFoD69lODqv5Figk00g_jF1A4cJQ
 
 ## settings.py
 ```
+from dotenv import load_dotenv
+load_dotenv()
+```
+```
 INSTALLED_APPS = [
     ...
     'captcha',
