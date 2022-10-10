@@ -10,24 +10,33 @@ pip install django-environ
 pip install python-dotenv
 ```
 
-## Admin.py
+## .env
 ```
-from captcha import fields
-from django.contrib.auth.forms import AuthenticationForm
-import environ
-
-env = environ.Env()
-env.read_env(".env")
-
-
-class LoginForm(AuthenticationForm):
-    captcha = fields.ReCaptchaField()
-
-
-if env.str("RECAPTCHA_PUBLIC_KEY", None) and env.str("RECAPTCHA_PRIVATE_KEY", None):
-    admin.site.login_form = LoginForm
-admin.site.login_template = "login.html"
+RECAPTCHA_PUBLIC_KEY=6LdtyR0iAAAAAJ7rUZsGnM52_zYcIeoRCDLQIXDv
+RECAPTCHA_PRIVATE_KEY=6LdtyR0iAAAAAFoD69lODqv5Figk00g_jF1A4cJQ
 ```
+
+## settings.py
+```
+INSTALLED_APPS = [
+    ...
+    'captcha',
+    ...
+]
+```
+```
+TEMPLATES = [
+    {
+        ...
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        ...
+]
+```
+```
+RECAPTCHA_PUBLIC_KEY = str(os.environ.get("RECAPTCHA_PUBLIC_KEY"))
+RECAPTCHA_PRIVATE_KEY = str(os.environ.get("RECAPTCHA_PRIVATE_KEY"))
+```
+
 #### path:venv/lib/django/contrib/admin/templates/admin/login.html
 add: 56 line -> ```<div class="form-row"> {{ form.captcha.errors }} {{ form.captcha }} </div>```
 
@@ -108,23 +117,21 @@ add: 56 line -> ```<div class="form-row"> {{ form.captcha.errors }} {{ form.capt
 {% endblock %}
 ```
 
-## settings.py
+## Admin.py
 ```
-INSTALLED_APPS = [
-    ...
-    'captcha',
-    ...
-]
-```
-```
-TEMPLATES = [
-    {
-        ...
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
-        ...
-]
-```
-```
-RECAPTCHA_PUBLIC_KEY = "6LdtyR0iAAAAAJ7rUZsGnM52_zYcIeoRCDLQIXDv"
-RECAPTCHA_PRIVATE_KEY = "6LdtyR0iAAAAAFoD69lODqv5Figk00g_jF1A4cJQ"
+from captcha import fields
+from django.contrib.auth.forms import AuthenticationForm
+import environ
+
+env = environ.Env()
+env.read_env(".env")
+
+
+class LoginForm(AuthenticationForm):
+    captcha = fields.ReCaptchaField()
+
+
+if env.str("RECAPTCHA_PUBLIC_KEY", None) and env.str("RECAPTCHA_PRIVATE_KEY", None):
+    admin.site.login_form = LoginForm
+admin.site.login_template = "login.html"
 ```
