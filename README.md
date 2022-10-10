@@ -41,7 +41,7 @@ RECAPTCHA_PUBLIC_KEY = str(os.environ.get("RECAPTCHA_PUBLIC_KEY"))
 RECAPTCHA_PRIVATE_KEY = str(os.environ.get("RECAPTCHA_PRIVATE_KEY"))
 ```
 
-#### path:venv/lib/django/contrib/admin/templates/admin/login.html
+#### path: venv/lib/django/contrib/admin/templates/admin/login.html
 add: 56 line -> ```<div class="form-row"> {{ form.captcha.errors }} {{ form.captcha }} </div>```
 
 ## templates/login.html
