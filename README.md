@@ -139,3 +139,22 @@ if env.str("RECAPTCHA_PUBLIC_KEY", None) and env.str("RECAPTCHA_PRIVATE_KEY", No
     admin.site.login_form = LoginForm
 admin.site.login_template = "login.html"
 ```
+
+### panle login
+```
+from django.contrib.auth.views import LoginView
+from ###.admin import LoginForm
+import environ
+
+env = environ.Env()
+env.read_env(".env")
+
+
+class Login(LoginView):
+    if env.str("RECAPTCHA_PUBLIC_KEY", None) and env.str("RECAPTCHA_PRIVATE_KEY", None):
+        form_class = LoginForm
+    template_name = "##/##/login.html"
+
+    def get_success_url(self):
+        return reverse_lazy("###")
+```
