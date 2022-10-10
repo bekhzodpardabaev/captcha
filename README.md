@@ -25,6 +25,8 @@ if env.str("RECAPTCHA_PUBLIC_KEY", None) and env.str("RECAPTCHA_PRIVATE_KEY", No
     admin.site.login_form = LoginForm
 admin.site.login_template = "login.html"
 ```
+#### path:venv/lib/django/contirb/admin/templates/admin/login.html
+add: 56 line -> ```<div class="form-row"> {{ form.captcha.errors }} {{ form.captcha }} </div>```
 
 ## templates/login.html
 ```
