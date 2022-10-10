@@ -2,6 +2,7 @@
 ## install
 ```
 pip install django-recaptcha
+pip install django-environ
 ```
 
 ## Admin.py
