@@ -6,6 +6,9 @@ pip install django-recaptcha
 ```
 pip install django-environ
 ```
+```
+pip install python-dotenv
+```
 
 ## Admin.py
 ```
