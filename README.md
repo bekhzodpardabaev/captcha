@@ -107,10 +107,21 @@ add: 56 line -> ```<div class="form-row"> {{ form.captcha.errors }} {{ form.capt
 
 ## settings.py
 ```
+INSTALLED_APPS = [
+    ...
+    'captcha',
+    ...
+]
+```
+```
 TEMPLATES = [
     {
         ...
         'DIRS': [os.path.join(BASE_DIR, 'templates')],
         ...
 ]
+```
+```
+RECAPTCHA_PUBLIC_KEY = "6LdtyR0iAAAAAJ7rUZsGnM52_zYcIeoRCDLQIXDv"
+RECAPTCHA_PRIVATE_KEY = "6LdtyR0iAAAAAFoD69lODqv5Figk00g_jF1A4cJQ"
 ```
