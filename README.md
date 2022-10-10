@@ -142,6 +142,7 @@ admin.site.login_template = "login.html"
 
 ### panel login
 ```
+from django.urls import reverse_lazy
 from django.contrib.auth.views import LoginView
 from ###.admin import LoginForm
 import environ
